@@ -32,9 +32,9 @@ class CPMComBinaryView(BinaryView):
                               seg_rwx|seg_code|seg_data)
         sec_text = SectionSemantics.ReadOnlyCodeSectionSemantics
         sec_data = SectionSemantics.ReadWriteDataSectionSemantics
-        self.add_auto_section('.text', 0x0100, len(data),
+        self.add_auto_section('.text', 0x0100, data.length,
                               sec_text)
-        self.add_auto_section('.data', 0x0100, len(data),
+        self.add_auto_section('.data', 0x0100, data.length,
                               sec_data)
 
         self.navigate('Linear:COM', self.entry_point)
@@ -46,5 +46,8 @@ class CPMComBinaryView(BinaryView):
 
     def perform_get_entry_point(self):
         return 0x0100
+
+    def perform_get_address_size(self):
+        return 0x2
 
 CPMComBinaryView.register()

@@ -1,6 +1,6 @@
 from binaryninja import Architecture, RegisterInfo, IntrinsicInfo, InstructionInfo, InstructionTextToken, InstructionTextTokenType
 from binaryninja.enums import Endianness, FlagRole, LowLevelILFlagCondition
-from .lifter import disassemble
+from .lifter import analyze
 import struct
 
 class Intel8080(Architecture):
@@ -8,22 +8,23 @@ class Intel8080(Architecture):
     address_size = 2
     default_int_size = 1
     max_instr_length = 3
-    stack_pointer = 'sp'
+    stack_pointer = 'SP'
 
     regs = {
-        'a' : RegisterInfo('a', 1),
-        'bc' : RegisterInfo('bc', 2),
-            'b' : RegisterInfo('bc', 1, 0),
-            'c' : RegisterInfo('bc', 1, 1),
-        'de' : RegisterInfo('de', 2),
-            'd' : RegisterInfo('de', 1, 0),
-            'e' : RegisterInfo('de', 1, 1),
-        'hl' : RegisterInfo('hl', 2),
-            'h' : RegisterInfo('hl', 1, 0),
-            'l' : RegisterInfo('hl', 1, 1),
-        'sp' : RegisterInfo('sp', 2),
-        'pc' : RegisterInfo('pc', 2),
+        'A' : RegisterInfo('A', 1),
+        'BC' : RegisterInfo('BC', 2),
+            'B' : RegisterInfo('BC', 1, 0),
+            'C' : RegisterInfo('BC', 1, 1),
+        'DE' : RegisterInfo('DE', 2),
+            'D' : RegisterInfo('DE', 1, 0),
+            'E' : RegisterInfo('DE', 1, 1),
+        'HL' : RegisterInfo('HL', 2),
+            'H' : RegisterInfo('HL', 1, 0),
+            'L' : RegisterInfo('HL', 1, 1),
+        'SP' : RegisterInfo('SP', 2),
+        'PC' : RegisterInfo('PC', 2),
     }
+
     flags = [
         'cy', # carry
         'z',  # zero
@@ -47,16 +48,18 @@ class Intel8080(Architecture):
     }
 
     def get_instruction_info(self, data, addr):
-        text, inst_len = disassemble.disas(data)
+        text, inst_len = analyze.disas(data, addr)
         info = InstructionInfo()
         info.length = inst_len
+        info = analyze.branch_info(data, addr, info)
         return info
 
     def get_instruction_text(self, data, addr):
-        return disassemble.disas(data)
+        text_tokens, inst_len = analyze.disas(data, addr)
+        # print(text_tokens)
+        return text_tokens, inst_len
 
     def get_instruction_low_level_il(self, data, addr, il):
         pass
 
 Intel8080.register()
-print("ligma balls")

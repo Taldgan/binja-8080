@@ -8,116 +8,119 @@ __all__ = [
     'DAA',
     'DI',
     'EI',
+    'HLT',
+    'IN',
+    'OUT',
 ]
 # NOP (No Operation)
 class NOP():
-    _tok_args = [        
-        ('inst', 'NOP'),
-    ]
-
-    _width = 1
+    def __init__(self):
+        self._tok_args = [        
+            ('inst', 'NOP'),
+        ]
 
     def getTokens(self, addr):
-        tokens = [makeToken(tok) for tok in self._tok_args]
+        tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
-    def getWidth(self):
-        return self._width
+    @staticmethod
+    def getWidth():
+        return 1
     
 # DAA ???
 class DAA():
-    _tok_args = [        
-        ('inst', 'NOP'),
-    ]
-
-    _width = 1
+    def __init__(self):
+        self._tok_args = [        
+            ('inst', 'NOP'),
+        ]
 
     def getTokens(self, addr):
-        tokens = [makeToken(tok) for tok in self._tok_args]
+        tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
-    def getWidth(self):
-        return self._width
+    @staticmethod
+    def getWidth():
+        return 1
 
 
 # DI ???
 class DI():
-    _tok_args = [        
-        ('inst', 'DI'),
-    ]
-
-    _width = 1
+    def __init__(self):
+        self._tok_args = [        
+            ('inst', 'DI'),
+        ]
 
     def getTokens(self, addr):
-        tokens = [makeToken(tok) for tok in self._tok_args]
+        tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
-    def getWidth(self):
-        return self._width
+    @staticmethod
+    def getWidth():
+        return 1
 
 
 # EI ???
 class EI():
-    _tok_args = [        
-        ('inst', 'EI'),
-    ]
-
-    _width = 1
+    def __init__(self):
+        self._tok_args = [        
+            ('inst', 'EI'),
+        ]
 
     def getTokens(self, addr):
-        tokens = [makeToken(tok) for tok in self._tok_args]
+        tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
-    def getWidth(self):
-        return self._width
+    @staticmethod
+    def getWidth():
+        return 1
 
 
 # IN
-class IN(Imm):
-    _tok_args = [        
-        ('inst', 'IN'),
-        ('text', ' '),
-        ('int', hex(Imm)),
-    ]
-
-    _width = 2
+class IN():
+    def __init__(self, Imm):
+        self._tok_args = [        
+            ('inst', 'IN'),
+            ('text', ' '),
+            ('int', hex(Imm)),
+        ]
 
     def getTokens(self, addr):
-        tokens = [makeToken(tok) for tok in self._tok_args]
+        tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
-    def getWidth(self):
-        return self._width
+    @staticmethod
+    def getWidth():
+        return 2
 
 
 # OUT
-class OUT(Imm):
-    _tok_args = [        
-        ('inst', 'OUT'),
-        ('text', ' '),
-        ('int', hex(Imm)),
-    ]
-
-    _width = 2
+class OUT():
+    def __init__(self, Imm):
+        self._tok_args = [        
+            ('inst', 'OUT'),
+            ('text', ' '),
+            ('int', hex(Imm)),
+        ]
 
     def getTokens(self, addr):
-        tokens = [makeToken(tok) for tok in self._tok_args]
+        tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
-    def getWidth(self):
-        return self._width
+    @staticmethod
+    def getWidth():
+        return 2
 
 # HALT
 class HLT():
-    _tok_args = [        
-        ('inst', 'HLT'),
-    ]
-
-    _width = 1
+    def __init__(self):
+        self._tok_args = [        
+            ('inst', 'HLT'),
+        ]
 
     def getTokens(self, addr):
-        tokens = [makeToken(tok) for tok in self._tok_args]
+        tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
-    def getWidth(self):
-        return self._width
+    @staticmethod
+    def getWidth():
+        return 1

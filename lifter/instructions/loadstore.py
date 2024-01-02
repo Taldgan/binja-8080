@@ -7,144 +7,146 @@ __all__ = [
     'LoadMemReg',
     'StoreAddrA',
     'StoreMemA',
+    'StoreMemReg',
 ]
 
 # LXI REG, D16
-class LoadRegImm(DstReg, Imm):
-    _tok_args = [        
-        ('inst', 'LXI'),
-        ('text', ' '),
-        ('reg', DstReg),
-        ('sep', ','),
-        ('text', ' '),
-        ('int', hex(Imm)),
-    ]
-
-    _width = 3
+class LoadRegImm():
+    def __init__(self, DstReg, Imm):
+        self._tok_args = [        
+            ('inst', 'LXI'),
+            ('text', ' '),
+            ('reg', DstReg),
+            ('sep', ','),
+            ('text', ' '),
+            ('int', hex(Imm)),
+        ]
 
     def getTokens(self, addr):
-        tokens = [makeToken(tok) for tok in self._tok_args]
+        tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
-    def getWidth(self):
-        return self._width
+    @staticmethod
+    def getWidth():
+        return 3
 
 # LDA (A <- [addr])
-class LoadAccumulatorMem(Addr):
-    _tok_args = [
-        ('inst', 'LDA'),
-        ('text', ' '),
-        ('reg', 'A'),
-        ('sep', ','),
-        ('text', ' '),
-        ('s_mem', '['),
-        ('addr', hex(Addr)),
-        ('e_mem', ']'),
-    ]
-
-    _width = 3
+class LoadAccumulatorMem():
+    def __init__(self, Addr):
+        self._tok_args = [
+            ('inst', 'LDA'),
+            ('text', ' '),
+            ('reg', 'A'),
+            ('sep', ','),
+            ('text', ' '),
+            ('s_mem', '['),
+            ('addr', hex(Addr)),
+            ('e_mem', ']'),
+        ]
 
     def getTokens(self, addr):
-        tokens = [makeToken(tok) for tok in self._tok_args]
+        tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
-    def getWidth(self):
-        return self._width
+    @staticmethod
+    def getWidth():
+        return 3
 
 # LDAX (A <- [SrcReg])
-class LoadAccumulatorRegMem(SrcReg):
-    _tok_args = [
-        ('inst', 'LDA'),
-        ('text', ' '),
-        ('reg', 'A'),
-        ('sep', ','),
-        ('text', ' '),
-        ('s_mem', '['),
-        ('reg', SrcReg),
-        ('e_mem', ']'),
-    ]
-
-    _width = 1
+class LoadAccumulatorRegMem():
+    def __init__(self, SrcReg):
+        self._tok_args = [
+            ('inst', 'LDA'),
+            ('text', ' '),
+            ('reg', 'A'),
+            ('sep', ','),
+            ('text', ' '),
+            ('s_mem', '['),
+            ('reg', SrcReg),
+            ('e_mem', ']'),
+        ]
 
     def getTokens(self, addr):
-        tokens = [makeToken(tok) for tok in self._tok_args]
+        tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
-    def getWidth(self):
-        return self._width
+    @staticmethod
+    def getWidth():
+        return 1
+
 # LHLD (HL = [addr])
-class LoadMemReg(Addr):
-    _tok_args = [
-        ('inst', 'LHLD'),
-        ('text', ' '),
-        ('s_mem', '['),
-        ('addr', Addr),
-        ('e_mem', ']'),
-    ]
-
-    _width = 3
+class LoadMemReg():
+    def __init__(self, Addr):
+        self._tok_args = [
+            ('inst', 'LHLD'),
+            ('text', ' '),
+            ('s_mem', '['),
+            ('addr', hex(Addr)),
+            ('e_mem', ']'),
+        ]
 
     def getTokens(self, addr):
-        tokens = [makeToken(tok) for tok in self._tok_args]
+        tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
-    def getWidth(self):
-        return self._width
+    @staticmethod
+    def getWidth():
+        return 3
 
 # SHLD ([addr] = HL)
-class StoreMemReg(Addr):
-    _tok_args = [
-        ('inst', 'SHLD'),
-        ('text', ' '),
-        ('s_mem', '['),
-        ('addr', Addr),
-        ('e_mem', ']'),
-    ]
-
-    _width = 3
+class StoreMemReg():
+    def __init__(self, Addr):
+        self._tok_args = [
+            ('inst', 'SHLD'),
+            ('text', ' '),
+            ('s_mem', '['),
+            ('addr', hex(Addr)),
+            ('e_mem', ']'),
+        ]
 
     def getTokens(self, addr):
-        tokens = [makeToken(tok) for tok in self._tok_args]
+        tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
-    def getWidth(self):
-        return self._width
+    @staticmethod
+    def getWidth():
+        return 3
 
 # STA addr
-class StoreAddrA(Addr):
-    _tok_args = [
-        ('inst', 'STA'),
-        ('text', ' '),
-        ('s_mem', '['),
-        ('addr', Addr),
-        ('e_mem', ']'),
-    ]
-
-    _width = 3
+class StoreAddrA():
+    def __init__(self, Addr):
+        self._tok_args = [
+            ('inst', 'STA'),
+            ('text', ' '),
+            ('s_mem', '['),
+            ('addr', hex(Addr)),
+            ('e_mem', ']'),
+        ]
 
     def getTokens(self, addr):
-        tokens = [makeToken(tok) for tok in self._tok_args]
+        tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
-    def getWidth(self):
-        return self._width
+    @staticmethod
+    def getWidth():
+        return 3
 
 # STAX DstReg ([DstReg] <- A)
-class StoreMemA(DstReg):
-    _tok_args = [
-        ('inst', 'STAX'),
-        ('text', ' '),
-        ('s_mem', '['),
-        ('reg', DstReg),
-        ('e_mem', ']'),
-    ]
-
-    _width = 1
+class StoreMemA():
+    def __init__(self, DstReg):
+        self._tok_args = [
+            ('inst', 'STAX'),
+            ('text', ' '),
+            ('s_mem', '['),
+            ('reg', DstReg),
+            ('e_mem', ']'),
+        ]
 
     def getTokens(self, addr):
-        tokens = [makeToken(tok) for tok in self._tok_args]
+        tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
-    def getWidth(self):
-        return self._width
+    @staticmethod
+    def getWidth():
+        return 1
 

@@ -11,73 +11,69 @@ __all__ = [
 ]
 
 # PUSH SrcReg
-class PushReg(SrcReg):
-    _tok_args = [        
-        ('inst', 'PUSH'),
-        ('text', ' '),
-        ('reg', SrcReg),
-    ]
-
-    _width = 1
+class PushReg():
+    def __init__(self, SrcReg):
+        self._tok_args = [        
+            ('inst', 'PUSH'),
+            ('text', ' '),
+            ('reg', SrcReg),
+        ]
 
     def getTokens(self, addr):
-        tokens = [makeToken(tok) for tok in self._tok_args]
+        tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
-    def getWidth(self):
-        return self._width
+    @staticmethod
+    def getWidth():
+        return 1
 
     
 # PUSH PSW
-class PushAFlags(SrcReg):
-    _tok_args = [        
-        ('inst', 'PUSH'),
-        ('text', ' '),
-        ('reg', SrcReg),
-    ]
-
-    _width = 1
+class PushAFlags():
+    def __init__(self):
+        self._tok_args = [        
+            ('inst', 'PUSH PSW'),
+        ]
 
     def getTokens(self, addr):
-        tokens = [makeToken(tok) for tok in self._tok_args]
+        tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
-    def getWidth(self):
-        return self._width
+    @staticmethod
+    def getWidth():
+        return 1
 
 
 # POP SrcReg
-class PopReg(SrcReg):
-    _tok_args = [        
-        ('inst', 'POP'),
-        ('text', ' '),
-        ('reg', SrcReg),
-    ]
-
-    _width = 1
+class PopReg():
+    def __init__(self, SrcReg):
+        self._tok_args = [        
+            ('inst', 'POP'),
+            ('text', ' '),
+            ('reg', SrcReg),
+        ]
 
     def getTokens(self, addr):
-        tokens = [makeToken(tok) for tok in self._tok_args]
+        tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
-    def getWidth(self):
-        return self._width
+    @staticmethod
+    def getWidth():
+        return 1
 
     
 # POP PSW
-class PopAFlags(SrcReg):
-    _tok_args = [        
-        ('inst', 'POP'),
-        ('text', ' '),
-        ('reg', SrcReg),
-    ]
-
-    _width = 1
+class PopAFlags():
+    def __init__(self):
+        self._tok_args = [        
+            ('inst', 'POP PSW'),
+        ]
 
     def getTokens(self, addr):
-        tokens = [makeToken(tok) for tok in self._tok_args]
+        tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
-    def getWidth(self):
-        return self._width
+    @staticmethod
+    def getWidth():
+        return 1
     

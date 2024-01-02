@@ -4,6 +4,7 @@ __all__ = [
     'MovRegImm',
     'MovRegMem',
     'MovMemReg',
+    'MovMemImm',
     'MovToHL',
     'HLToPC',
     'Exchange',
@@ -11,143 +12,165 @@ __all__ = [
 ]
 
 # MOV DstReg, SrcReg
-class MovRegReg(DstReg, SrcReg):
-    _tok_args = [
-        ('inst', 'MOV'),
-        ('text', ' '),
-        ('reg', DstReg),
-        ('sep', ','),
-        ('text', ' '),
-        ('reg', SrcReg),
-    ]
-
-    _width = 1
+class MovRegReg():
+    def __init__(self, DstReg, SrcReg):
+        self._tok_args = [
+            ('inst', 'MOV'),
+            ('text', ' '),
+            ('reg', DstReg),
+            ('sep', ','),
+            ('text', ' '),
+            ('reg', SrcReg),
+        ]
 
     def getTokens(self, addr):
-        tokens = [makeToken(tok) for tok in self._tok_args]
+        tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
-    def getWidth(self):
-        return self._width
+    @staticmethod
+    def getWidth():
+        return 1
 
 # MVI DstReg, D8
-class MovRegImm(DstReg, Imm):
-    _tok_args = [
-        ('inst', 'MVI'),
-        ('text', ' '),
-        ('reg', DstReg),
-        ('sep', ','),
-        ('text', ' '),
-        ('int', hex(Imm)),
-    ]
-
-    _width = 2
-
-    def getTokens(self, addr):
-        tokens = [makeToken(tok) for tok in self._tok_args]
-        return tokens
-
-    def getWidth(self):
-        return self._width
-
-class MovRegMem(DstReg):
-    _tok_args = [
-        ('inst', 'MOV'),
-        ('text', ' '),
-        ('reg', DstReg),
-        ('sep', ','),
-        ('text', ' '),
-        ('s_mem', '['),
-        ('reg', 'HL'),
-        ('e_mem', ']'),
-    ]
-
-    _width = 1
+class MovRegImm():
+    def __init__(self, DstReg, Imm):
+        self._tok_args = [
+            ('inst', 'MVI'),
+            ('text', ' '),
+            ('reg', DstReg),
+            ('sep', ','),
+            ('text', ' '),
+            ('int', hex(Imm)),
+        ]
 
     def getTokens(self, addr):
-        tokens = [makeToken(tok) for tok in self._tok_args]
+        tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
-    def getWidth(self):
-        return self._width
+    @staticmethod
+    def getWidth():
+        return 2
 
-class MovMemReg(SrcReg):
-    _tok_args = [
-        ('inst', 'MOV'),
-        ('text', ' '),
-        ('s_mem', '['),
-        ('reg', 'HL'),
-        ('e_mem', ']'),
-        ('sep', ','),
-        ('text', ' '),
-        ('reg', SrcReg),
-    ]
-
-    _width = 1
+# MVI [HL], D8
+class MovMemImm():
+    def __init__(self, Imm):
+        self._tok_args = [
+            ('inst', 'MVI'),
+            ('text', ' '),
+            ('s_mem', '['),
+            ('reg', 'HL'),
+            ('e_mem', ']'),
+            ('sep', ','),
+            ('text', ' '),
+            ('int', hex(Imm)),
+        ]
 
     def getTokens(self, addr):
-        tokens = [makeToken(tok) for tok in self._tok_args]
+        tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
-    def getWidth(self):
-        return self._width
+    @staticmethod
+    def getWidth():
+        return 2
+
+class MovRegMem():
+    def __init__(self, DstReg):
+        self._tok_args = [
+            ('inst', 'MOV'),
+            ('text', ' '),
+            ('reg', DstReg),
+            ('sep', ','),
+            ('text', ' '),
+            ('s_mem', '['),
+            ('reg', 'HL'),
+            ('e_mem', ']'),
+        ]
+
+    def getTokens(self, addr):
+        tokens = [makeToken(*tok) for tok in self._tok_args]
+        return tokens
+
+    @staticmethod
+    def getWidth():
+        return 1
+
+class MovMemReg():
+    def __init__(self, SrcReg):
+        self._tok_args = [
+            ('inst', 'MOV'),
+            ('text', ' '),
+            ('s_mem', '['),
+            ('reg', 'HL'),
+            ('e_mem', ']'),
+            ('sep', ','),
+            ('text', ' '),
+            ('reg', SrcReg),
+        ]
+
+    def getTokens(self, addr):
+        tokens = [makeToken(*tok) for tok in self._tok_args]
+        return tokens
+
+    @staticmethod
+    def getWidth():
+        return 1
 
 # XTHL (H = [SP], L = [SP + 1])
 class MovToHL():
-    _tok_args = [
-        ('inst', 'XTHL'),
-    ]
-
-    _width = 1
+    def __init__(self):
+        self._tok_args = [
+            ('inst', 'XTHL'),
+        ]
 
     def getTokens(self, addr):
-        tokens = [makeToken(tok) for tok in self._tok_args]
+        tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
-    def getWidth(self):
-        return self._width
+    @staticmethod
+    def getWidth():
+        return 1
 
 # PCHL (PC.hi = H, PC.low = L)
 class HLToPC():
-    _tok_args = [
-        ('inst', 'PCHL'),
-    ]
-
-    _width = 1
+    def __init__(self):
+        self._tok_args = [
+            ('inst', 'PCHL'),
+        ]
 
     def getTokens(self, addr):
-        tokens = [makeToken(tok) for tok in self._tok_args]
+        tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
-    def getWidth(self):
-        return self._width
+    @staticmethod
+    def getWidth():
+        return 1
 
 # XCHG (H <-> D, L <-> E)
 class Exchange():
-    _tok_args = [
-        ('inst', 'XCHG'),
-    ]
-
-    _width = 1
+    def __init__(self):
+        self._tok_args = [
+            ('inst', 'XCHG'),
+        ]
 
     def getTokens(self, addr):
-        tokens = [makeToken(tok) for tok in self._tok_args]
+        tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
-    def getWidth(self):
-        return self._width
+    @staticmethod
+    def getWidth():
+        return 1
 
 # SPHL (SP = HL)
 class HLToSP():
-    _tok_args = [
-        ('inst', 'SPHL'),
-    ]
-
-    _width = 1
+    def __init__(self):
+        self._tok_args = [
+            ('inst', 'SPHL'),
+        ]
 
     def getTokens(self, addr):
-        tokens = [makeToken(tok) for tok in self._tok_args]
+        tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
-    def getWidth(self):
-        return self._width
+    @staticmethod
+    def getWidth():
+        return 1
