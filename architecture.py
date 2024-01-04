@@ -56,10 +56,9 @@ class Intel8080(Architecture):
 
     def get_instruction_text(self, data, addr):
         text_tokens, inst_len = analyze.disas(data, addr)
-        # print(text_tokens)
         return text_tokens, inst_len
 
     def get_instruction_low_level_il(self, data, addr, il):
-        pass
+        analyze.lift(data, addr, il)
 
 Intel8080.register()

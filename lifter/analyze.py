@@ -272,27 +272,22 @@ opdict = {
     0x18 : (NOP, None),
 }
 
-def disas(data, addr):
+def get_class(data, addr):
     inst_class, args = opdict[data[0]]
     if args == None:
         inst = inst_class()
     elif len(args) <= inst_class.getWidth() - 1:
-        inst = inst_class(*args, int.from_bytes(data[1:], 'little'))
+        inst = inst_class(*args, int.from_bytes(data[1:inst_class.getWidth()], 'little'))
     else:
         inst = inst_class(*args)
+    return inst, inst_class
 
+def disas(data, addr):
+    inst, inst_class = get_class(data, addr)
     return (inst.getTokens(addr), inst_class.getWidth())
 
 def branch_info(data, addr, info):
-    inst_class, args = opdict[data[0]]
-    if args == None:
-        inst = inst_class()
-    elif len(args) <= inst_class.getWidth() - 1:
-        inst = inst_class(*args, int.from_bytes(data[1:], 'little'))
-    else:
-        inst = inst_class(*args)
-
+    inst, inst_class = get_class(data, addr)
     if hasattr(inst_class, 'getBranch'):
         return inst.getBranch(info, addr)
-
     return info
