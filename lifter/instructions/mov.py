@@ -1,3 +1,4 @@
+from binaryninja.lowlevelil import LLIL_TEMP
 from ..utils import *
 __all__ = [
     'MovRegReg',
@@ -22,13 +23,15 @@ class MovRegReg():
             ('text', ' '),
             ('reg', SrcReg),
         ]
+        self._dst_reg = DstReg
+        self._src_reg = SrcReg
 
     def getTokens(self, addr):
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
     def lift(self, addr, il):
-        expr = il.unimplemented()
+        expr = il.set_reg(1, self._dst_reg, il.reg(1, self._src_reg))
         il.append(expr)
         
     @staticmethod
@@ -46,13 +49,15 @@ class MovRegImm():
             ('text', ' '),
             ('int', hex(Imm)),
         ]
+        self._dst_reg = DstReg
+        self._imm = Imm
 
     def getTokens(self, addr):
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
     def lift(self, addr, il):
-        expr = il.unimplemented()
+        expr = il.set_reg(1, self._dst_reg, il.const(1, self._imm))
         il.append(expr)
         
     @staticmethod
@@ -72,13 +77,14 @@ class MovMemImm():
             ('text', ' '),
             ('int', hex(Imm)),
         ]
+        self._imm = Imm
 
     def getTokens(self, addr):
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
     def lift(self, addr, il):
-        expr = il.unimplemented()
+        expr = il.store(1, il.reg(2, 'HL'), il.const(1, self._imm))
         il.append(expr)
         
     @staticmethod
@@ -97,13 +103,15 @@ class MovRegMem():
             ('reg', 'HL'),
             ('e_mem', ']'),
         ]
+        self._dst_reg = DstReg
 
     def getTokens(self, addr):
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
     def lift(self, addr, il):
-        expr = il.unimplemented()
+        subexpr = il.load(1, il.reg(2, 'HL'))
+        expr = il.set_reg(1, self._dst_reg, subexpr)
         il.append(expr)
         
     @staticmethod
@@ -122,13 +130,14 @@ class MovMemReg():
             ('text', ' '),
             ('reg', SrcReg),
         ]
+        self._src_reg = SrcReg
 
     def getTokens(self, addr):
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
     def lift(self, addr, il):
-        expr = il.unimplemented()
+        expr = il.store(1, il.reg(2, 'HL'), il.reg(1, self._src_reg))
         il.append(expr)
         
     @staticmethod
@@ -147,7 +156,8 @@ class MovToHL():
         return tokens
 
     def lift(self, addr, il):
-        expr = il.unimplemented()
+        # Load 2 bytes from reg sp, set hl to those 2 bytes
+        expr = il.set_reg(2, 'HL', il.load(2, il.reg(2, 'SP')))
         il.append(expr)
         
     @staticmethod
@@ -166,7 +176,7 @@ class HLToPC():
         return tokens
 
     def lift(self, addr, il):
-        expr = il.unimplemented()
+        expr = il.set_reg(2, 'PC', il.reg(2, 'HL'))
         il.append(expr)
         
     @staticmethod
@@ -185,8 +195,13 @@ class Exchange():
         return tokens
 
     def lift(self, addr, il):
-        expr = il.unimplemented()
-        il.append(expr)
+        tmp_reg = LLIL_TEMP(il.temp_reg_count)
+        # Set temp to 'DE'
+        il.append(il.set_reg(2, tmp_reg, il.reg(2, 'DE')))
+        # Set 'DE' to 'HL'
+        il.append(il.set_reg(2, 'DE', il.reg(2, 'HL')))
+        # Set 'HL' to 'tmp'
+        il.append(il.set_reg(2, 'HL', tmp_reg))
         
     @staticmethod
     def getWidth():
@@ -204,7 +219,7 @@ class HLToSP():
         return tokens
 
     def lift(self, addr, il):
-        expr = il.unimplemented()
+        expr = il.set_reg(2, 'SP', il.reg(2, 'HL'))
         il.append(expr)
         
     @staticmethod
