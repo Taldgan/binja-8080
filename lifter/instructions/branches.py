@@ -52,6 +52,10 @@ class UnconditionalJump():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 3
@@ -74,6 +78,10 @@ class JumpNotZero():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 3
@@ -97,6 +105,10 @@ class JumpZero():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 3
@@ -121,6 +133,10 @@ class JumpCarry():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 3
@@ -145,6 +161,10 @@ class JumpNotCarry():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 3
@@ -168,6 +188,10 @@ class JumpParityOdd():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 3
@@ -192,6 +216,10 @@ class JumpParityEven():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 3
@@ -215,6 +243,10 @@ class JumpPositive():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 3
@@ -238,6 +270,10 @@ class JumpMinus():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 3
@@ -263,6 +299,10 @@ class UnconditionalCall():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 3
@@ -285,6 +325,10 @@ class CallZero():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 3
@@ -307,6 +351,10 @@ class CallNotZero():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 3
@@ -329,6 +377,10 @@ class CallCarry():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 3
@@ -351,6 +403,10 @@ class CallNotCarry():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 3
@@ -373,6 +429,10 @@ class CallParityOdd():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 3
@@ -395,6 +455,10 @@ class CallParityEven():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 3
@@ -417,6 +481,10 @@ class CallPositive():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 3
@@ -439,6 +507,10 @@ class CallMinus():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 3
@@ -460,6 +532,10 @@ class UnconditionalReturn():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -478,6 +554,10 @@ class ReturnZero():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -497,6 +577,10 @@ class ReturnNotZero():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -516,6 +600,10 @@ class ReturnCarry():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -535,6 +623,10 @@ class ReturnNotCarry():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -554,6 +646,10 @@ class ReturnParityOdd():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -573,6 +669,10 @@ class ReturnParityEven():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -593,6 +693,10 @@ class ReturnPositive():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -612,6 +716,10 @@ class ReturnMinus():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -644,6 +752,10 @@ class Reset():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1

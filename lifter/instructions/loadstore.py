@@ -26,6 +26,10 @@ class LoadRegImm():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 3
@@ -48,6 +52,10 @@ class LoadAccumulatorMem():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 3
@@ -70,6 +78,10 @@ class LoadAccumulatorRegMem():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -89,6 +101,10 @@ class LoadMemReg():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 3
@@ -108,6 +124,10 @@ class StoreMemReg():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 3
@@ -127,6 +147,10 @@ class StoreAddrA():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 3
@@ -146,6 +170,10 @@ class StoreMemA():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1

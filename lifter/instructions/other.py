@@ -12,6 +12,7 @@ __all__ = [
     'IN',
     'OUT',
 ]
+
 # NOP (No Operation)
 class NOP():
     def __init__(self):
@@ -23,6 +24,10 @@ class NOP():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.nop()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -38,6 +43,9 @@ class DAA():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        
     @staticmethod
     def getWidth():
         return 1
@@ -54,6 +62,9 @@ class DI():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        
     @staticmethod
     def getWidth():
         return 1
@@ -70,6 +81,9 @@ class EI():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        
     @staticmethod
     def getWidth():
         return 1
@@ -88,6 +102,9 @@ class IN():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        
     @staticmethod
     def getWidth():
         return 2
@@ -106,6 +123,9 @@ class OUT():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        
     @staticmethod
     def getWidth():
         return 2
@@ -121,6 +141,9 @@ class HLT():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        
     @staticmethod
     def getWidth():
         return 1

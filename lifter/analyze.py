@@ -291,3 +291,8 @@ def branch_info(data, addr, info):
     if hasattr(inst_class, 'getBranch'):
         return inst.getBranch(info, addr)
     return info
+
+def lift(data, addr, il):
+    inst, inst_class = get_class(data, addr)
+    inst.lift(addr, il)
+

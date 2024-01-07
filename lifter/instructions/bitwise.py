@@ -35,6 +35,10 @@ class AndAccumulatorReg():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -52,6 +56,10 @@ class AndAccumulatorImm():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 2
@@ -71,6 +79,10 @@ class AndAccumulatorMem():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -89,6 +101,10 @@ class XorAccumulatorReg():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -106,6 +122,10 @@ class XorAccumulatorImm():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 2
@@ -125,6 +145,10 @@ class XorAccumulatorMem():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -143,6 +167,10 @@ class OrAccumulatorReg():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -160,6 +188,10 @@ class OrAccumulatorImm():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 2
@@ -179,6 +211,10 @@ class OrAccumulatorMem():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -194,6 +230,10 @@ class RotateAccumulatorLeftWithCarry():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -209,6 +249,10 @@ class RotateAccumulatorRightWithCarry():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -224,6 +268,10 @@ class RotateAccumulatorLeft():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -239,6 +287,10 @@ class RotateAccumulatorRight():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -254,6 +306,10 @@ class NotAccumulator():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -269,6 +325,10 @@ class SetCarry():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -284,6 +344,10 @@ class NotCarry():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1

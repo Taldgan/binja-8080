@@ -22,6 +22,10 @@ class IncReg():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+    
     @staticmethod
     def getWidth():
         return 1
@@ -41,6 +45,10 @@ class IncMem():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+    
     @staticmethod
     def getWidth():
         return 1
@@ -60,6 +68,10 @@ class IncReg16():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+    
     @staticmethod
     def getWidth():
         return 1
@@ -78,6 +90,10 @@ class DecReg():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+    
     @staticmethod
     def getWidth():
         return 1
@@ -96,6 +112,10 @@ class DecReg16():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+    
     @staticmethod
     def getWidth():
         return 1
@@ -116,6 +136,10 @@ class DecMem():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+    
     @staticmethod
     def getWidth():
         return 1

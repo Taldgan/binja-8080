@@ -36,6 +36,10 @@ class AddReg():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -53,6 +57,10 @@ class AddImm():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 2
@@ -72,6 +80,10 @@ class AddMem():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -89,6 +101,10 @@ class AddImmWithCarry():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 2
@@ -106,6 +122,10 @@ class AddRegWithCarry():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -125,6 +145,10 @@ class AddMemWithCarry():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -142,6 +166,10 @@ class AddHLReg():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -161,6 +189,10 @@ class SubReg():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -178,6 +210,10 @@ class SubRegWithCarry():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -197,6 +233,10 @@ class SubMem():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -216,6 +256,10 @@ class SubMemWithCarry():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -233,6 +277,10 @@ class SubImm():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 2
@@ -250,6 +298,10 @@ class SubImmWithCarry():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 2
@@ -269,6 +321,10 @@ class CompareReg():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -288,6 +344,10 @@ class CompareMem():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -306,6 +366,10 @@ class CompareImm():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 2

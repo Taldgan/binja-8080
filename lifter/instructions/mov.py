@@ -27,6 +27,10 @@ class MovRegReg():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -47,6 +51,10 @@ class MovRegImm():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 2
@@ -69,6 +77,10 @@ class MovMemImm():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 2
@@ -90,6 +102,10 @@ class MovRegMem():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -111,6 +127,10 @@ class MovMemReg():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -126,6 +146,10 @@ class MovToHL():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -141,6 +165,10 @@ class HLToPC():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -156,6 +184,10 @@ class Exchange():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
@@ -171,6 +203,10 @@ class HLToSP():
         tokens = [makeToken(*tok) for tok in self._tok_args]
         return tokens
 
+    def lift(self, addr, il):
+        expr = il.unimplemented()
+        il.append(expr)
+        
     @staticmethod
     def getWidth():
         return 1
